@@ -13,6 +13,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     pauseTimerBtn.addEventListener('click', function () {
         chrome.runtime.sendMessage({ pauseTimer: true });
+        if (pauseTimerBtn.textContent === 'Pause') {
+            pauseTimerBtn.textContent = 'Resume'
+        }
+        else {
+            pauseTimerBtn.textContent = 'Pause'
+        }
     });
 
     deleteTimerBtn.addEventListener('click', function () {
