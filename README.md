@@ -1,4 +1,4 @@
-# TimerXpert ![TimerXpert Logo](images/48.png)
+# TimerXpert ![TimerXpert Logo](images/32.png)
 
 ![GitHub top language](https://img.shields.io/github/languages/top/A-nshuman/Timer-extension?color=rgb(247,223,30))
 ![GitHub repo size](https://img.shields.io/github/repo-size/A-nshuman/Timer-extension?color=darkgreen)
