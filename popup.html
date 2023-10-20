@@ -6,14 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timer</title>
     <script src="popup.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Timer Timer</h1>
+    <h1>Simple Timer</h1>
     <input type="number" id="timerInput" value="1">
-    <button id="startTimer" type="submit">Start Timer</button>
-    <button id="pauseTimer" type="submit">Pause Timer</button>
-    <button id="deleteTimer" type="submit">Delete Timer</button>
+    <div class="buttons">
+        <button id="startTimer" type="submit">Start Timer</button>
+        <div class="sub-btn">
+            <button id="pauseTimer">Pause</button>
+            <button id="deleteTimer">Delete</button>
+        </div>
+    </div>
 </body>
 
 </html>
