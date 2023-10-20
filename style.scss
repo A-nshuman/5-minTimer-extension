@@ -1,0 +1,35 @@
+button{
+    display: inline-block;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 3px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    gap: 5px;
+
+    .sub-btn{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+    }
+}
+
+input{
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+h1{
+    text-align: center;
+}
