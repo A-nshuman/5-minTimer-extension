@@ -1,38 +1,48 @@
-chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-    if (changeInfo.status === 'complete') {
-        chrome.storage.local.set({ timerRunning: false });
-        chrome.browserAction.setBadgeText({ text: '' });
-        chrome.browserAction.setBadgeBackgroundColor({ color: [190, 190, 190, 230] });
-    }
-});
+let timerInterval;
+let timerDuration;
+let timerRunning = false;
+
+function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+}
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.startTimer) {
-        chrome.storage.local.set({ timerRunning: true });
-        chrome.browserAction.setBadgeText({ text: '5:00' });
-        chrome.browserAction.setBadgeBackgroundColor({ color: [255, 0, 0, 230] });
-        var timer = 300;
-        var intervalId = setInterval(function () {
-            timer--;
-            var minutes = Math.floor(timer / 60);
-            var seconds = timer % 60;
-            var text = minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
-            chrome.browserAction.setBadgeText({ text: text });
-            if (timer === 0) {
-                clearInterval(intervalId);
-                chrome.windows.create({
-                    'url': 'alert.html',
-                    'type': 'popup',
-                    'width': 250,
-                    'height': 150
-                });
-                chrome.storage.local.set({ timerRunning: false });
-                chrome.browserAction.setBadgeText({ text: '' });
-                chrome.browserAction.setBadgeBackgroundColor({ color: [190, 190, 190, 230] });
-            }
-        }, 1000);
-    } else if (request.restartTimer) {
-        chrome.storage.local.set({ timerRunning: false });
-        chrome.runtime.sendMessage({ startTimer: true });
+        timerDuration = request.duration || 300;
+        timerRunning = true;
+        startTimer();
+    }
+
+    if (request.pauseTimer) {
+        timerRunning = !timerRunning;
+        if (timerRunning) {
+            startTimer();
+        } else {
+            clearInterval(timerInterval);
+        }
+    }
+
+    if (request.deleteTimer) {
+        clearInterval(timerInterval);
+        chrome.browserAction.setBadgeText({ text: '' });
+        timerRunning = false;
     }
 });
+
+function startTimer() {
+    if (timerRunning) {
+        clearInterval(timerInterval);
+        timerInterval = setInterval(function () {
+            timerDuration--;
+            chrome.browserAction.setBadgeText({ text: formatTime(timerDuration) });
+            if (timerDuration === 0) {
+                clearInterval(timerInterval);
+                timerRunning = false;
+                chrome.browserAction.setBadgeText({ text: '' });
+                chrome.windows.create({ url: 'alert.html', type: 'popup', width: 200, height: 200 });
+            }
+        }, 1000);
+    }
+}
