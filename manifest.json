@@ -1,7 +1,7 @@
 {
     "name": "TimerXpert",
     "version": "1.0",
-    "description": "A timer that begins a countdown of any number of minutes on any website.",
+    "description": "A simple browser extension that adds a timer to your browser for easy time tracking and management.",
     "permissions": [
         "tabs",
         "storage"
