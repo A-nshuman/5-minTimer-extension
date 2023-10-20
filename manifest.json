@@ -1,7 +1,7 @@
 {
-    "name": "Productivity Timer",
+    "name": "TimerXpert",
     "version": "1.0",
-    "description": "A productivity timer that begins a 5-minute countdown on any website.",
+    "description": "A timer that begins a countdown of any number of minutes on any website.",
     "permissions": [
         "tabs",
         "storage"
