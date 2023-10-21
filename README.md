@@ -27,14 +27,17 @@ Before using this extension, make sure you have the following prerequisites:
 
 ## Installation
 
-#### Online installation 
+#### Online 
+
+##### ⚠️ Extension is still in experimental phase. It is currently not available on [Chrome Web Store](https://chrome.google.com/webstore/category/extensions) or [Edge Add-ons](https://microsoftedge.microsoft.com/addons/Microsoft-Edge-Extensions-Home). <br> ⏬ If you want the beta version, you can install it [manually](#manual) with the instructions given below.
+
 1. Download the Timer Extension from the [Chrome Web Store](https://chrome.google.com/webstore/category/extensions) or [Edge Add-ons](https://microsoftedge.microsoft.com/addons/Microsoft-Edge-Extensions-Home), depending on your browser.
 
 2. Install the extension and add it to your browser.
 
 3. Access the extension via the browser toolbar.
 
-#### Manual installation
+#### Manual
 1. Clone this repository:
      ```bash
      https://github.com/A-nshuman/Timer-extension.git
